@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /etsy/
+
+Sitemap: https://carewellkits.com/sitemap.xml
