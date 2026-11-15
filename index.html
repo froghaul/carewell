@@ -96,6 +96,10 @@ a{color:var(--teal)}
 .kitc .price{font-family:var(--body);font-weight:700;color:var(--teal);font-size:1rem;white-space:nowrap}
 .kitc.free{background:var(--sun-wash);border-color:transparent}
 .kitc .btn{justify-self:start}
+.next{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:6px}
+.nx{background:var(--teal-wash);border-radius:18px;padding:18px 20px;display:grid;gap:8px;align-content:start}
+.nx.free{background:var(--sun-wash)}
+.nx h3{margin:0;font-size:1.15rem}.nx p{margin:0;color:var(--muted);font-size:1rem}.nx .btn{justify-self:start;margin-top:4px}
 .hint{display:flex;gap:14px;align-items:center;flex-wrap:wrap;border-top:1.5px dashed var(--line);padding-top:18px;color:var(--muted);font-size:1rem}
 .hint b{color:var(--ink)}
 .hint a{font-weight:700}
@@ -357,6 +361,10 @@ grid.innerHTML=S.map((s,i)=>s.wide
  :`<button class="card reveal" style="animation-delay:${.1+i*.06}s" data-id="${s.id}" aria-expanded="false" aria-controls="panel">
   <span class="ic">${svg(I[s.ic])}</span><h3>${s.t}</h3><p>${s.d}</p><span class="go">Show me ${arrow}</span></button>`).join('');
 const kitCard=k=>{const [n,pr,d,u]=P[k];return `<article class="kitc${k==='free'?' free':''}"><h3>${n} <span class="price">${pr}</span></h3><p>${d}</p><a class="btn${k==='free'?'':' ghost'}" href="${u.startsWith('http')?u:'https://froghaul.github.io/carewell/'+u}" target="_blank" rel="noopener">${k==='free'?'Download free':'Have a look'}</a></article>`};
+const nextStep=s=>{const ks=(s.hint||['family']).slice(0,2);
+  return `<div class="next" aria-label="Next step"><div class="nx free"><span class="eyebrow">Free · 2 minutes</span><h3>Start with the fridge page</h3><p>Medicines, conditions, doctor and who to call, on one page for ambulance crews.</p><a class="btn" href="${T}#free">Get the free page</a></div>
+   ${ks.map(k=>`<div class="nx"><span class="eyebrow">${P[k][1]} · instant download</span><h3>${P[k][0]}</h3><p>${P[k][2]}</p><a class="btn" href="${T}${A[k]}">See what's inside</a></div>`).join('')}</div>
+   <p class="hint" style="border:0;padding-top:4px">Every kit: instant download · Google Sheets or Excel · 30-day money-back guarantee · <a href="${T}#kits">See all tools</a></p>`};
 let current='';
 function show(id,scroll){
   if(!scroll&&id===current&&!panel.hidden)return;current=id;
@@ -375,7 +383,7 @@ function show(id,scroll){
      ${it.tool?`<p class="toolline">${svg(I.tools)} ${it.tool[1]} ${tl(it.tool[0],it.tool[2])}</p>`:''}
      ${it.links?`<div class="links">${it.links.map(([l,u])=>u?`<a class="btn" href="${u}" target="_blank" rel="noopener">${l} ${ext}</a>`:`<span class="btn ghost" style="user-select:all">📞 ${l}</span>`).join('')}</div>`:''}</article>`).join('')}</div>
    ${s.quote?`<div class="quote"><span class="face" aria-hidden="true">B</span><div><p>“${s.quote[0]}”</p><small>Ben</small></div></div>`:''}
-   ${s.hint?`<p class="hint"><b>A tool that helps:</b> ${s.hint.map(k=>tl(k)).join(' · ')} · <a href="${T}#kits">all tools</a></p>`:''}
+   ${nextStep(s)}
    <p class="note">General information only. Check the official page before you apply.</p>`;
   panel.hidden=false;panel.classList.remove('open');void panel.offsetWidth;panel.classList.add('open');
   if(scroll)setTimeout(()=>glide(panel),60);
