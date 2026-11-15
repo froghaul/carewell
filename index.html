@@ -383,7 +383,9 @@ function show(id,scroll){
 grid.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c||!c.dataset.id)return;location.hash=c.dataset.id;show(c.dataset.id,true)});
 const route=h=>(h==='free'||h==='tools')?'':h;
 addEventListener('hashchange',()=>show(route(location.hash.slice(1)),false));
-show(route(location.hash.slice(1))||'money',false);
+const h0=route(location.hash.slice(1));
+show(h0||'money',false);
+if(h0&&S.some(x=>x.id===h0&&!x.wide)){if('scrollRestoration' in history)history.scrollRestoration='manual';addEventListener('load',()=>{scrollTo(0,0);setTimeout(()=>glide(panel),450)})}
 let fs=1.125;
 try{fs=parseFloat(localStorage.getItem('cw-fs'))||fs}catch(e){}
 const setFs=v=>{fs=Math.min(1.5,Math.max(1,v));document.documentElement.style.setProperty('--fs',fs+'rem');try{localStorage.setItem('cw-fs',fs)}catch(e){}};
