@@ -116,7 +116,7 @@ a{color:var(--teal)}
 .btn svg{width:18px;height:18px}
 .note{font-size:.95rem;color:var(--muted)}
 
-/* chris quote */
+/* ben quote */
 .quote{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--sun-wash);border-radius:20px;padding:20px 22px}
 .quote .face{width:52px;height:52px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#1d3236;font-size:1.3rem}
 .quote p{font-size:1.08rem}
@@ -222,13 +222,13 @@ footer.site{border-top:1.5px solid var(--line);padding-block:28px 40px;color:var
 
   <section class="story">
     <div>
-      <span class="eyebrow">From Chris</span>
+      <span class="eyebrow">From Ben</span>
       <h2>I'm learning this as I go, too.</h2>
       <p class="lede">I look after my parents. Every tip on this site is something we did, got wrong, or wish someone had told us. The stories are real moments with the details changed, so no one can be identified.</p>
     </div>
     <blockquote>
       “The hardest part isn't the appointments. It's hearing “nah, don't worry about it” when you can see they need help. I've learned to start things quietly anyway, so the help is ready when they finally say yes.”
-      <footer>Chris</footer>
+      <footer>Ben</footer>
       <p class="toolline" style="margin-top:14px">A medicine list everyone can find: <a class="tl" href="/tools/#free">our free fridge page</a></p>
     </blockquote>
   </section>
@@ -365,7 +365,7 @@ function show(id,scroll){
   if(!s){panel.hidden=true;return}
   if(s.kits){panel.innerHTML=`<header><span class="eyebrow">Tools</span><h2>${s.sub}</h2><p class="sub">Start with the free fridge page. The kits work in Google Sheets or Excel, with printables to fill in by hand.</p></header>
    <div class="kits">${s.kits.map(kitCard).join('')}</div>
-   ${s.quote?`<div class="quote"><span class="face" aria-hidden="true">C</span><div><p>“${s.quote[0]}”</p><small>Chris</small></div></div>`:''}
+   ${s.quote?`<div class="quote"><span class="face" aria-hidden="true">B</span><div><p>“${s.quote[0]}”</p><small>Ben</small></div></div>`:''}
    <p class="note">A printed, coil-bound Carer's Logbook is coming soon for people who'd rather write than type.</p>`;
    panel.hidden=false;panel.classList.remove('open');void panel.offsetWidth;panel.classList.add('open');
    if(scroll)setTimeout(()=>glide(panel),60);return}
@@ -374,7 +374,7 @@ function show(id,scroll){
      ${it.bring?`<div class="bring"><b>Bring this:</b> ${it.bring}</div>`:''}
      ${it.tool?`<p class="toolline">${svg(I.tools)} ${it.tool[1]} ${tl(it.tool[0],it.tool[2])}</p>`:''}
      ${it.links?`<div class="links">${it.links.map(([l,u])=>u?`<a class="btn" href="${u}" target="_blank" rel="noopener">${l} ${ext}</a>`:`<span class="btn ghost" style="user-select:all">📞 ${l}</span>`).join('')}</div>`:''}</article>`).join('')}</div>
-   ${s.quote?`<div class="quote"><span class="face" aria-hidden="true">C</span><div><p>“${s.quote[0]}”</p><small>Chris</small></div></div>`:''}
+   ${s.quote?`<div class="quote"><span class="face" aria-hidden="true">B</span><div><p>“${s.quote[0]}”</p><small>Ben</small></div></div>`:''}
    ${s.hint?`<p class="hint"><b>A tool that helps:</b> ${s.hint.map(k=>tl(k)).join(' · ')} · <a href="${T}#kits">all tools</a></p>`:''}
    <p class="note">General information only. Check the official page before you apply.</p>`;
   panel.hidden=false;panel.classList.remove('open');void panel.offsetWidth;panel.classList.add('open');
