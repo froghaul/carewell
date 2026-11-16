@@ -248,10 +248,10 @@ footer.site{border-top:1.5px solid var(--line);padding-block:28px 40px;color:var
 
   <section class="duo">
     <div class="soft sign">
-      <span class="eyebrow">Free, no sign-up</span>
+      <span class="eyebrow">Free fridge page</span>
       <h2>Start with the fridge page</h2>
-      <p>Their medicines, conditions, doctor and who to call, on one page. It's the first place paramedics look.</p>
-      <a class="btn" href="/tools/#free" style="justify-self:start">Get the free page</a>
+      <p>Their medicines, conditions, doctor and who to call, on one page. It's the first place paramedics look. We'll email it to you.</p>
+      <div data-cw-signup="compact"></div>
     </div>
     <div class="soft kit">
       <span class="eyebrow">Want it all in one place?</span>
@@ -360,7 +360,7 @@ grid.innerHTML=S.map((s,i)=>s.wide
   <span class="ic">${svg(I[s.ic])}</span><span class="txt"><h3>${s.t}</h3><p>${s.d}</p></span><span class="go">See the tools ${arrow}</span></a>`
  :`<button class="card reveal" style="animation-delay:${.1+i*.06}s" data-id="${s.id}" aria-expanded="false" aria-controls="panel">
   <span class="ic">${svg(I[s.ic])}</span><h3>${s.t}</h3><p>${s.d}</p><span class="go">Show me ${arrow}</span></button>`).join('');
-const kitCard=k=>{const [n,pr,d,u]=P[k];return `<article class="kitc${k==='free'?' free':''}"><h3>${n} <span class="price">${pr}</span></h3><p>${d}</p><a class="btn${k==='free'?'':' ghost'}" href="${u.startsWith('http')?u:'https://froghaul.github.io/carewell/'+u}" target="_blank" rel="noopener">${k==='free'?'Download free':'Have a look'}</a></article>`};
+const kitCard=k=>{const [n,pr,d,u]=P[k];return `<article class="kitc${k==='free'?' free':''}"><h3>${n} <span class="price">${pr}</span></h3><p>${d}</p>${k==='free'?`<a class="btn" href="${T}#free">Get it free</a>`:`<a class="btn ghost" href="${u.startsWith('http')?u:'https://froghaul.github.io/carewell/'+u}" target="_blank" rel="noopener">Have a look</a>`}</article>`};
 const nextStep=s=>{const ks=(s.hint||['family']).slice(0,2);
   return `<div class="next" aria-label="Next step"><div class="nx free"><span class="eyebrow">Free · 2 minutes</span><h3>Start with the fridge page</h3><p>Medicines, conditions, doctor and who to call, on one page for ambulance crews.</p><a class="btn" href="${T}#free">Get the free page</a></div>
    ${ks.map(k=>`<div class="nx"><span class="eyebrow">${P[k][1]} · instant download</span><h3>${P[k][0]}</h3><p>${P[k][2]}</p><a class="btn" href="${T}${A[k]}">See what's inside</a></div>`).join('')}</div>
@@ -403,5 +403,6 @@ document.getElementById('smaller').onclick=()=>setFs(fs-.125);
 
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cf8fc31286004e2e8cccc2bdc8f813a1"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="/signup.js" defer></script>
 </body>
 </html>
