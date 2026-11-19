@@ -374,7 +374,7 @@ function show(id,scroll){
   if(s.kits){panel.innerHTML=`<header><span class="eyebrow">Tools</span><h2>${s.sub}</h2><p class="sub">Start with the free fridge page. The kits work in Google Sheets or Excel, with printables to fill in by hand.</p></header>
    <div class="kits">${s.kits.map(kitCard).join('')}</div>
    ${s.quote?`<div class="quote"><span class="face" aria-hidden="true">B</span><div><p>“${s.quote[0]}”</p><small>Ben</small></div></div>`:''}
-   <p class="note">A printed, coil-bound Carer's Logbook is coming soon for people who'd rather write than type.</p>`;
+   <p class="note">Rather write than type? The printed, coil-bound <a href="/tools/#printed">Carer's Logbook</a> is posted to you (A$45 in Australia).</p>`;
    panel.hidden=false;panel.classList.remove('open');void panel.offsetWidth;panel.classList.add('open');
    if(scroll)setTimeout(()=>glide(panel),60);return}
   panel.innerHTML=`<header><span class="eyebrow">${s.t}</span><h2>${s.sub}</h2></header>
